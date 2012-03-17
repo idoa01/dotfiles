@@ -1,0 +1,37 @@
+# Look and feel
+startup_message off
+vbell off
+defscrollback 5000
+#caption always "%{= 11}%{+b w}Screen: %n | %h %=%t %c"
+#hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+caption always "%{= 11}%{+b w}Screen: %n | %{= 11}%{+b w}%-=%D %m/%d/%y | %C:%s %A |%{-}"
+#caption always "%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw %= %{mk}@%H %{yk}%D %{ck}%M%{wk} %{ck}%d %{gk}%c"
+hardstatus alwayslastline '%{= kG}%-Lw%{= kW}%50< %n*%f %t%{= kG}%+Lw%>'
+ 
+# Our warning of activity
+activity "Activity in %t(%n)"
+  
+# Left Right meta key mods
+#ALT-,. and ALT-<>
+bindkey "^[<" eval number !echo $WINDOW-1|bc
+bindkey "^[>" eval number !echo $WINDOW+1|bc
+bindkey "^[," prev
+bindkey "^[." next
+
+# allow people to attach to my screen
+multiuser on
+
+# # allow the following people full control
+# addacl root,idabramovich,mymanager,mycoworker1,mycoworker2
+# aclchg idabramovich +rwx “#?”
+# 
+# # allow everyone readonly access
+# aclchg *,!idabramovich -rwx “#?”
+
+# setup 10,000 lines of available scrollback — copy/paste
+defscrollback 10000
+
+# fix scrollback in putty
+termcapinfo xterm* ti@:te@
+
+# tips: http://www.hanhuy.com/pfn/integrating_screen_and_clipboard 

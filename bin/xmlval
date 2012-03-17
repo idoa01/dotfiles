@@ -1,0 +1,3 @@
+#!/bin/bash
+export XML_CATALOG_FILES=/home/local/CORP/idabramovich/Documents/xml/catalog
+xmllint --valid --noout "$@"

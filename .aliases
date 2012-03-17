@@ -1,0 +1,21 @@
+# ~/.aliases  -- examples of fancy aliases
+alias	loadaliases	'source ~/.aliases'
+# Basic aliases
+alias rm 'rm -i'	# ask on remove
+alias cp 'cp -i'	# ask on overwrite
+alias mv 'mv -i'	# ask on overwrite
+# A couple of useful aliases:
+alias hterm   'xterm -fn heb8x13 -fb heb8x13-bold &'
+alias checkip 'ping -b 192.168.0.0'
+# add color support for ls
+alias ls      'ls $LS_OPTIONS'    # ls with color 
+alias ll      'ls $LS_OPTIONS -alhrt'         # list ls
+alias llt     'll $LS_OPTIONS --sort time'    # list ls according to time
+# less with ansi color
+#alias less    'less -R'
+alias lltr    'll -r --sort time' # list ls according to time, reversed
+# ssh tunnel - remmember to change proxy settings to 127.0.0.1:3333
+#alias sshtunnel 'ssh -L3333:proxy.huji.ac.il:8080 ido@jasper.md.huji.ac.il' #sshtunnel
+alias sshtunnel 'ssh -L 8118:localhost:8118 diamond.md.huji.ac.il' 
+#alias eclipse="UBUNTU_MENUPROXY=0 LIBOVERLAY_SCROLLBAR=0 eclipse"
+alias eclipse "UBUNTU_MENUPROXY=0 eclipse"

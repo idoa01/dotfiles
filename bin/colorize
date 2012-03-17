@@ -1,0 +1,38 @@
+#!/bin/bash
+word=$1
+color_name=`echo $2 | tr 'A-Z' 'a-z'`
+
+case "$color_name" in
+    black)
+        color=30;
+        ;;
+    red)
+        color=31;
+        ;;
+    green)
+        color=32;
+        ;;
+    yellow)
+        color=33;
+        ;;
+    blue)
+        color=34;
+        ;;
+    magenta)
+        color=35;
+        ;;
+    cyan)
+        color=36;
+        ;;
+    white)
+        color=37;
+        ;;
+    *)
+        color=31;
+        ;;
+esac
+
+while read line
+do
+    echo $line | sed -e "s/$word/$(printf '\e[%d;1m&\e[m' $color)/g"
+done

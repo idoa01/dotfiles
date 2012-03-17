@@ -1,0 +1,5 @@
+#!/bin/bash
+file_name=$1
+last_revision=`svn info $1 | grep "Last Changed Rev:" | awk -F': ' '{print $2}'`
+echo "svn diff $1 -r$((last_revision-1)):$((last_revision))"
+svn diff $1 -r$((last_revision-1)):$((last_revision))

@@ -1,0 +1,40 @@
+[user]
+	name = Ido Abramovich
+	email = ido@billguard.com
+[github]
+	user = idoa01
+	token = 86f4ab0f87e1ef1c3fe69d784bf1ccbb
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[diff]
+        external = git_diff_wrapper
+[pager]
+        diff =
+[alias]
+        st = status
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        head = rev-parse HEAD
+        aa = add --all
+        au = add -u
+        dc = diff --cached
+        ci = commit
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p
+        search = grep
+        pullff = pull --ff-only
+        ff = merge --ff-only
+        recent = log --oneline -10
+        oneline = log --oneline
+        h = log -1 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        di = diff
+        amend = commit --amend
+        r = !git l -20
+        l = log --graph --abbrev-commit --date=relative
+        la = !git l --all
+        fa = fetch --all
+        ra = !git r --all
+        co = checkout
+        mylog = log origin/master..HEAD

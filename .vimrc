@@ -56,7 +56,7 @@ autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 " Python autocomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-
+set completeopt=menuone,longest,preview
 
 " use indents of 4 spaces, and have them copied down lines:
 set shiftwidth=4
@@ -134,6 +134,9 @@ nmap <C-w> :tabclose<CR>
 
 " gundo plugin
 map <leader>g :GundoToggle<CR>
+
+" PEP8 validation
+let g:pep8_map='<leader>8'
 
 "map g :1^V^M
 "map q :q<CR>

@@ -38,3 +38,5 @@
         ra = !git r --all
         co = checkout
         mylog = log origin/master..HEAD
+[core]
+	excludefile = /home/ido/.gitignore

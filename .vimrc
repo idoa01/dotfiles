@@ -236,6 +236,10 @@ endfunction
 
 let g:SuperTabDefaultCompletionType = 'context'
 
+" prevent MBE from showing up when there are only two buffers open, so that
+" GDiff will work correctly
+let g:miniBufExplorerMoreThanOne=3
+
 if has("statusline")
     set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
 endif

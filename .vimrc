@@ -54,8 +54,14 @@ autocmd FileType perl set smartindent
 " CloseTag plugin
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
-" Python autocomplete
+" autocomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=phpcomplete#CompleteTags
+
+let g:SuperTabDefaultCompletionType = 'context'
 set completeopt=menuone,longest,preview
 
 " use indents of 4 spaces, and have them copied down lines:
@@ -233,8 +239,6 @@ function! Mosh_Auto_Highlight_Toggle()
     :endif 
 endfunction 
 "------------------------------
-
-let g:SuperTabDefaultCompletionType = 'context'
 
 " prevent MBE from showing up when there are only two buffers open, so that
 " GDiff will work correctly

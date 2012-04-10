@@ -3,7 +3,7 @@
 	email = ido@billguard.com
 [github]
 	user = idoa01
-	token = 86f4ab0f87e1ef1c3fe69d784bf1ccbb
+	token = TOKEN 
 [color]
 	branch = auto
 	diff = auto

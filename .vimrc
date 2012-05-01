@@ -47,6 +47,8 @@ set nowrap                    " don't make it look like there are line breaks wh
 filetype on                   " enable filetype detection
 filetype plugin on            " enables filetype specific plugins
 
+" define filetypes 
+autocmd BufNewFile,BufRead *.ftl set filetype=html
 " for C-like programming, have automatic indentation
 autocmd FileType c,cpp,slang set cindent
 " for Perl programming, have things in braces indenting themselves:

@@ -152,3 +152,5 @@ complete -A hostname ssh sftp scp
 function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -
 }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

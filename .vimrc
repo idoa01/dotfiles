@@ -279,6 +279,12 @@ function! DoPrettyXML()
 endfunction
 command! PrettyXML call DoPrettyXML()
 
+function! DoTidy()
+    "runs tidy on xml format
+    silent %!tidy -i -xml -q
+endfunction
+command! Tidy call DoTidy()
+
 " ex command for toggling hex mode - define mapping if desired
 command -bar Hexmode call ToggleHex()
 

@@ -13,3 +13,4 @@ alias llt='ll $LS_OPTIONS --sort time'    # list ls according to time
 alias lltr='ll -r --sort time' # list ls according to time, reversed
 alias eclipse="UBUNTU_MENUPROXY=0 LIBOVERLAY_SCROLLBAR=0 eclipse"
 #alias eclipse="UBUNTU_MENUPROXY=0 eclipse"
+alias gd='git diff'

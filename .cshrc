@@ -89,3 +89,7 @@ if ( $?DISPLAY ) then
         xhost +$DISPLAYIP > /dev/null
     endif
 endif
+
+# vim as man PAGER
+setenv PAGER /bin/sh\ -c\ \"unset\ PAGER\;col\ -b\ -x\ \|\ vim\ -c\ \'set\ ft=man\ nomod\ nolist\'\ -\"
+

@@ -149,6 +149,9 @@ let g:pep8_map='<leader>8'
 "map g :1^V^M
 "map q :q<CR>
 
+" for vim as man pager:
+let $PAGER=''
+
 " Very cool tab completion
 function! InsertTabWrapper(direction)
     let col = col('.') - 1

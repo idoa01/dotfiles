@@ -153,10 +153,19 @@ function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -
 }
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 # PAGER for man reading
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
               vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
               -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
               -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
+if [ -f "$HOME/.rvm/scripts/rvm" ]
+then 
+    source ~/.rvm/scripts/rvm
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    rvm use 1.8.7
+fi
+
+if [ -f "$HOME/.bash_ec2.sh" ]; then
+    source ~/.bash_ec2.sh
+fi

@@ -2,3 +2,5 @@ git clone git@github.com:idoa01/dotfiles.git dotfiles
 git submodule init
 git submodule update --init --recursive
 
+update all submodules:
+git submodule foreach git pull origin master

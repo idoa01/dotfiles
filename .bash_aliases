@@ -15,5 +15,5 @@ alias eclipse="UBUNTU_MENUPROXY=0 LIBOVERLAY_SCROLLBAR=0 eclipse"
 #alias eclipse="UBUNTU_MENUPROXY=0 eclipse"
 alias gd='git diff'
 alias rvm="$HOME/.rvm/scripts/rvm"
-alias selector="ssh -N -L 3307:localhost:3306 selector@DB-SLAVE-EAST-old"
+alias selector="ssh -N -L 3307:localhost:3306 selector@DB-PLAYSLAVE-EAST"
 alias mongo_selector="ssh -N -L 27071:localhost:27017 root@MONGO-PROD-A"

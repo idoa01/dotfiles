@@ -66,6 +66,11 @@ autocmd FileType xml set omnifunc=phpcomplete#CompleteTags
 let g:SuperTabDefaultCompletionType = 'context'
 set completeopt=menuone,longest,preview
 
+" tagbar for javacript
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '/usr/local/bin/jsctags'
+\ }
+
 " use indents of 4 spaces, and have them copied down lines:
 set shiftwidth=4
 set softtabstop=4

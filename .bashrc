@@ -35,6 +35,10 @@ fi
 # PYTHONPATH
 PYTHONPATH=/home/ido/source/crowdspot-parent/services/src/main/python/:${PYTHONPATH}
 
+#virtualenv stuff
+export WORKON_HOME=$HOME/.virtualenvs 
+source /usr/local/bin/virtualenvwrapper.sh
+
 # Set git autocompletion and PS1 integration
 if [ -f /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git 

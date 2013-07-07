@@ -10,9 +10,10 @@ endif
 " Add manual (Man) support:
 runtime ftplugin/man.vim
 
-set background=dark           "  Backgound is dark or light
-set backspace=2               "  Allow backspacing over identatiom, end-of-line, and start-of-line
-set hidden                    "  Enable working with hidden buffers
+set nocompatible              " We're running Vim, not Vi!
+set background=dark           " Backgound is dark or light
+set backspace=2               " Allow backspacing over identatiom, end-of-line, and start-of-line
+set hidden                    " Enable working with hidden buffers
 set vb                        " no beep
 set ic                        " ingnore case in search
 set scs                       " case sensitive when upper case search pattern
@@ -45,6 +46,7 @@ cmap ;rcm %s/<C-M>//g
 
 set nowrap                    " don't make it look like there are line breaks where there aren't
 filetype on                   " enable filetype detection
+filetype indent on            " enables filetype specific indenting
 filetype plugin on            " enables filetype specific plugins
 
 " define filetypes 

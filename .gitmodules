@@ -31,15 +31,3 @@
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule ".vim/bundle/vim-ruby"]
-	path = .vim/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic	
-	url = git://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails			
-	url = git://github.com/tpope/vim-rails.git
-[submodule ".vim/bundle/vim-bundler"]
-	path = .vim/bundle/vim-bundler		
-	url = git://github.com/tpope/vim-bundler.git

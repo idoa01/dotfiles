@@ -2,3 +2,8 @@ git clone git@github.com:idoa01/dotfiles.git dotfiles
 git submodule init
 git submodule update --init --recursive
 
+
+Adding submodules:
+------------------
+cd ~/dotfiles
+git submodule add <git://github ...> .vim/bundle/<submodule-name>

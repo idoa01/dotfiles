@@ -37,7 +37,7 @@ PYTHONPATH=/home/ido/source/crowdspot-parent/services/src/main/python/:${PYTHONP
 
 #virtualenv stuff
 export WORKON_HOME=$HOME/.virtualenvs 
-source /usr/local/bin/virtualenvwrapper.sh
+[ -x /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 # Set git autocompletion and PS1 integration
 if [ -f /etc/bash_completion.d/git ]; then
@@ -168,7 +168,7 @@ if [ -f "$HOME/.rvm/scripts/rvm" ]
 then 
     source ~/.rvm/scripts/rvm
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-    rvm use 1.8.7
+    rvm use 1.9.3
 fi
 
 if [ -f "$HOME/.bash_ec2.sh" ]; then

@@ -17,5 +17,5 @@ alias gd='git diff'
 alias rvm="$HOME/.rvm/scripts/rvm"
 alias selector="ssh -N -L 3307:localhost:3306 selector@DB-PLAYSLAVE-EAST"
 alias mongo_selector="ssh -N -L 27071:localhost:27017 root@MONGO-PROD-A"
-alias sshuttle="sshuttle -r root@dev.billguard.com 0/0"
+alias sshuttle="sshuttle -r shuttle-host 0/0"
 alias vless='vim -u /usr/share/vim/vimcurrent/macros/less.vim'

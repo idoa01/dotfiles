@@ -142,17 +142,79 @@ fi
 # ssh hosts
 HOSTFILE=~/.hosts
 
-function _ssh() {
-  local cur
-  cur=${COMP_WORDS[COMP_CWORD]}
-  if [ "${cur:0:1}" != "-" ]; then
-        COMPREPLY=( $(awk '/^Host '$2'/{print $2}' $HOME/.ssh/config) )
-  fi            
-  return 0
+#function _ssh() {
+#  local cur
+#  cur=${COMP_WORDS[COMP_CWORD]}
+#  if [ "${cur:0:1}" != "-" ]; then
+#        COMPREPLY=( $(awk '/^Host '$2'/{print $2}' $HOME/.ssh/config) )
+#  fi            
+#  return 0
+#}
+#
+#complete -F _ssh ssh sftp scp
+#complete -A hostname ssh sftp scp
+
+# The completion routines
+_ssh_completion() 
+{
+        if [[ -r ~/.ssh && -r ~/.ssh/config ]]; then
+                local cur prev opts
+                COMPREPLY=()
+                cur="${COMP_WORDS[COMP_CWORD]}"
+                prev="${COMP_WORDS[COMP_CWORD-1]}"
+                opts="-1 -2 -4 -6 -A -a -C -f -g -K -k -M -N -n -q -s -T -t -V -v -X -x -Y -y"
+                optsargs="-b -c -D -e -F -I -i -L -l -m -o -O -p -R -S -w -W"
+
+                if [[ ${cur} == -* ]]; then
+                        # option completion
+                        COMPREPLY=( $(compgen -W "${opts} ${optsargs}" -- ${cur}) )
+                else
+                        # current string is no option itself
+                        if [[ ${prev} == -i ]] ; then
+                                # if current option is -i, then complete identitys
+                                priv_keys="`grep -l PRIVATE ~/.ssh/*`"  # find private key files 
+                                COMPREPLY=( $(compgen -W "${priv_keys}" -- ${cur}) )
+                        else
+                                # if no option is given, then try to complete with hostname
+                                hosts="`grep -i "^host " ~/.ssh/config |cut -d' ' -f2`"  # grep all lines
+                                COMPREPLY=( $(compgen -W "${hosts}" -- ${cur}) )
+                        fi
+                fi
+        fi
 }
 
-complete -F _ssh ssh sftp scp
-complete -A hostname ssh sftp scp
+_scp_completion()
+{
+        if [[ -r ~/.ssh && -r ~/.ssh/config ]]; then
+                local cur prev opts
+                COMPREPLY=()
+                cur="${COMP_WORDS[COMP_CWORD]}"
+                prev="${COMP_WORDS[COMP_CWORD-1]}"
+                opts="-1 -2 -4 -6 -B -C -p -q -r -v -i -h"
+
+                if [[ ${cur} == -* ]]; then
+                        # option completion
+                        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+                else
+                        # current string is no option itself
+                        if [[ ${prev} == -i ]] ; then
+                                # if current option is -i, then complete identitys
+                                priv_keys="`grep -l PRIVATE ~/.ssh/*`"  # find private key files 
+                                COMPREPLY=( $(compgen -W "${priv_keys}" -- ${cur}) )
+                        else
+                                # if no option is given, then try to complete with hostname and file names
+                                hosts="`grep -i "^host " ~/.ssh/config |cut -d' ' -f2`"  # grep all lines
+                                COMPREPLY=( $(compgen -f -W "${hosts}" -- ${cur}) )
+                        fi
+                fi
+        fi
+}
+
+
+# Add completion functions to commands
+complete -F _ssh_completion ssh
+complete -F _scp_completion scp
+complete -F _scp_completion sftp
 
 function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -

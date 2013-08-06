@@ -49,8 +49,16 @@ filetype on                   " enable filetype detection
 filetype indent on            " enables filetype specific indenting
 filetype plugin on            " enables filetype specific plugins
 
+" use indents of 4 spaces, and have them copied down lines:
+set shiftwidth=4
+set softtabstop=4
+set shiftround
+set expandtab
+set autoindent
+
 " define filetypes 
 autocmd BufNewFile,BufRead *.ftl set filetype=html
+autocmd BufNewFile,BufRead *.axlsx set filetype=ruby
 " for C-like programming, have automatic indentation
 autocmd FileType c,cpp,slang set cindent
 " for Perl programming, have things in braces indenting themselves:
@@ -58,6 +66,8 @@ autocmd FileType perl set smartindent
 " CloseTag plugin
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+" set FileType indentation
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 " autocomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -72,13 +82,6 @@ set completeopt=menuone,longest,preview
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '/usr/local/bin/jsctags'
 \ }
-
-" use indents of 4 spaces, and have them copied down lines:
-set shiftwidth=4
-set softtabstop=4
-set shiftround
-set expandtab
-set autoindent
 
 "set ai
 "map <F3> :w<CR>

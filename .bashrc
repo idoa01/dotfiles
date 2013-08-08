@@ -86,8 +86,8 @@ fi
 if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 #    PS1="%{\033[35m%}<%{\033[1m%}%h%{\033[0;35m%}\|%{\033[1m%}%?%{\033[0;35m%}>%{\033[1;36m%}%n%{\033[0;36m%}@%{\033[1;32m%}%m%{\033[0;32m%}:%{\033[1;33m%}%~%{\033[33m%}%#%{\033[0m%} "
-    GIT_PROMPT_START="${PURPLE}<${purple}\!${PURPLE}|${purple}\$?${PURPLE}>${CYAN}\u${cyan}@${green}\h${GREEN}:${yellow}\w${NC}"
-    GIT_PROMPT_END="${yellow}>${NC} "
+    GIT_PROMPT_START="${PURPLE}<${purple}\!${PURPLE}|${purple}\$?${PURPLE}>${NC}"
+    GIT_PROMPT_END=" ${CYAN}\u${cyan}@${green}\h${GREEN}:${yellow}\w${NC}${yellow}>${NC} "
     PS1=${GIT_PROMPT_START}${GIT_PROMPT_END}
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '

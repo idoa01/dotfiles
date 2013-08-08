@@ -1,0 +1,1 @@
+../libs/bash/bash-git-prompt/gitprompt.sh

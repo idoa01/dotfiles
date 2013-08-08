@@ -71,6 +71,7 @@ NC='\[\e[0m\]'              # No Color
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
 
+
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -85,11 +86,15 @@ fi
 if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 #    PS1="%{\033[35m%}<%{\033[1m%}%h%{\033[0;35m%}\|%{\033[1m%}%?%{\033[0;35m%}>%{\033[1;36m%}%n%{\033[0;36m%}@%{\033[1;32m%}%m%{\033[0;32m%}:%{\033[1;33m%}%~%{\033[33m%}%#%{\033[0m%} "
-    PS1="${PURPLE}<${purple}\!${PURPLE}|${purple}\$?${PURPLE}>${CYAN}\u${cyan}@${green}\h${GREEN}:${yellow}\w>${NC} "
+    GIT_PROMPT_START="${PURPLE}<${purple}\!${PURPLE}|${purple}\$?${PURPLE}>${CYAN}\u${cyan}@${green}\h${GREEN}:${yellow}\w${NC}"
+    GIT_PROMPT_END="${yellow}>${NC} "
+    PS1=${GIT_PROMPT_START}${GIT_PROMPT_END}
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+[ -a $HOME/.bash/gitprompt.sh ] && source $HOME/.bash/gitprompt.sh
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

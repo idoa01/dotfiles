@@ -67,7 +67,7 @@ autocmd FileType perl set smartindent
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 " set FileType indentation
-autocmd BufNewFile,BufReadPost *.coffee setl ts=2 sw=2
+autocmd BufNewFile,BufReadPost *.coffee setl ts=2 sts=2 sw=2 noet
 " autocomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS

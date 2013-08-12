@@ -78,6 +78,9 @@ autocmd FileType xml set omnifunc=phpcomplete#CompleteTags
 " vim-coffee-script customization
 " au BufWritePost *.coffee silent CoffeeLint | cwindow | redraw!
 
+" syntastic configuration
+let g:syntastic_coffee_coffeelint_args = "--csv --file ~/dotfiles/coffeelint.config.json"
+
 let g:SuperTabDefaultCompletionType = 'context'
 set completeopt=menuone,longest,preview
 

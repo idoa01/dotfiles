@@ -59,6 +59,8 @@ set autoindent
 " define filetypes 
 autocmd BufNewFile,BufRead *.ftl set filetype=html
 autocmd BufNewFile,BufRead *.axlsx set filetype=ruby
+autocmd BufNewFile,BufRead *.dust set filetype=html
+autocmd BufNewFile,BufRead *.css.scss set filetype=css
 " for C-like programming, have automatic indentation
 autocmd FileType c,cpp,slang set cindent
 " for Perl programming, have things in braces indenting themselves:
@@ -73,6 +75,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=phpcomplete#CompleteTags
 
 " vim-coffee-script customization

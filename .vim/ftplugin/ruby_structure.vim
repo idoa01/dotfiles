@@ -19,4 +19,4 @@ if !exists( "*RubyEndToken" )
 
 endif
 
-imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
+" imap <buffer> <CR> <C-R>=RubyEndToken()<CR>

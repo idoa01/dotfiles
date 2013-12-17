@@ -32,9 +32,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# PYTHONPATH
-PYTHONPATH=/home/ido/source/crowdspot-parent/services/src/main/python/:${PYTHONPATH}
-
 #virtualenv stuff
 export WORKON_HOME=$HOME/.virtualenvs 
 [ -x /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
@@ -245,3 +242,4 @@ fi
 if [ -f "$HOME/.bash_ec2.sh" ]; then
     source ~/.bash_ec2.sh
 fi
+export CONTENT_ACTIVATION_DEV_DB_HOST=int16

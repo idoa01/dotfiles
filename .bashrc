@@ -13,7 +13,7 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
-PATH=${PATH}:~/bin/:~/dotfiles/bin
+PATH=${PATH}:~/bin:~/dotfiles/bin
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -102,7 +102,8 @@ xterm*|rxvt*)
     ;;
 esac
 
-export LS_OPTIONS='--color=tty -F -b'
+#export LS_OPTIONS='--color=tty -F -b'
+export LS_OPTIONS='-G -F -b'
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

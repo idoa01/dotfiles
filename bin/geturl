@@ -1,0 +1,78 @@
+#!/usr/bin/python
+import urllib2
+import sys
+import locale
+
+
+ESC = '\033'
+CSI = ESC + "["
+#CSI="\x1B["
+
+class progressBar(object):
+    def __init__(self, minValue = 0, maxValue = 10, totalWidth=12):
+        self.progBar = "[]" # This holds the progress bar string
+        self.min = minValue
+        self.max = maxValue
+        self.span = maxValue - minValue
+        self.width = totalWidth
+        self.amount = 0 # When amount == max, we are 100% done
+        self.updateAmount(0) # Build progress bar string
+
+    def updateAmount(self, newAmount = 0):
+        if newAmount < self.min: newAmount = self.min
+        if newAmount > self.max: newAmount = self.max
+        self.amount = newAmount
+
+        # Figure out the new percent done, round to an integer
+        diffFromMin = float(self.amount - self.min)
+        percentDone = (diffFromMin / float(self.span)) * 100.0
+        percentDone = round(percentDone)
+        percentDone = int(percentDone)
+
+        # Figure out how many hash bars the percentage should be
+        allFull = self.width - 2
+        numHashes = (percentDone / 100.0) * allFull
+        numHashes = int(round(numHashes))
+    
+        # build a progress bar with hashes and spaces
+        self.progBar = "[" + '#'*numHashes + ' '*(allFull-numHashes) + "]"
+        
+        # figure out where to put the percentage, roughly centered
+        percentPlace = (len(self.progBar) / 2) - len(str(percentDone))
+        percentString = str(percentDone) + "%"
+        
+        # slice the percentage into the bar
+        #self.progBar = self.progBar[0:percentPlace] + percentString + self.progBar[percentPlace+len(percentString):]
+        self.progBar = self.progBar[0:percentPlace] + self.progBar[percentPlace+len(percentString):] + " " + percentString + " "
+        self.progBar += locale.format("%d",newAmount,True) + "/" + locale.format("%d",self.max,True) + " bytes"
+
+    def __str__(self):
+        return str(self.progBar)
+
+if __name__ == '__main__':
+    locale.setlocale(locale.LC_ALL,"")
+    url = sys.argv[1]
+    BUFFER_SIZE = 1024*10
+    print "opening url..."
+    page = urllib2.urlopen(url)
+    filename = urllib2.unquote(page.geturl().rsplit('/',1)[1].split('?')[0])
+    size = int(page.info()['Content-Length'])
+
+    print "saving to %r" % filename
+    f = open(filename,'w')
+    #f.write(page.read())
+    x = '0'
+    counter = 0
+    progress = progressBar(0,size,50)
+    while x != '':
+        x = page.read(BUFFER_SIZE)
+        f.write(x)
+        f.flush()
+        counter += 1
+        progress.updateAmount(counter*BUFFER_SIZE)
+        sys.stdout.write(CSI+"0G")
+        #sys.stdout.write(CSI+"K")
+        sys.stdout.write(str(progress))
+    f.close()
+    print
+

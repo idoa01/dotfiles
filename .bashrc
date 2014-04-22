@@ -102,8 +102,15 @@ xterm*|rxvt*)
     ;;
 esac
 
-#export LS_OPTIONS='--color=tty -F -b'
-export LS_OPTIONS='-G -F -b'
+case $(uname -s) in 
+    Darwin|FreeBSD)
+        export LS_OPTIONS='-G -F -b'
+    ;;
+    Linux)
+        export LS_OPTIONS='--color=tty -F -b'
+    ;;
+esac
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

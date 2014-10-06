@@ -251,3 +251,7 @@ if [ -f "$HOME/.bash_ec2.sh" ]; then
     source ~/.bash_ec2.sh
 fi
 export CONTENT_ACTIVATION_DEV_DB_HOST=int16
+
+#logamazon:
+export DEV_PEM=$HOME/.ssh/dev.pem
+export AWS_CONFIG_FILE=$HOME/.aws-config

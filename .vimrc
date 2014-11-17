@@ -61,6 +61,7 @@ autocmd BufNewFile,BufRead *.ftl set filetype=html
 autocmd BufNewFile,BufRead *.axlsx set filetype=ruby
 autocmd BufNewFile,BufRead *.dust set filetype=html
 autocmd BufNewFile,BufRead *.css.scss set filetype=css
+autocmd BufNewFile,BufRead *.hive set filetype=hive
 " for C-like programming, have automatic indentation
 autocmd FileType c,cpp,slang set cindent
 " for Perl programming, have things in braces indenting themselves:

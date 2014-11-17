@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/VimClojure"]
 	path = .vim/bundle/VimClojure
 	url = git@github.com:vim-scripts/VimClojure.git
+[submodule ".vim/bundle/vim-hive"]
+	path = .vim/bundle/vim-hive
+	url = git@github.com:vickenty/vim-hive.git

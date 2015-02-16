@@ -1,5 +1,5 @@
 #!/bin/bash
-du --max-depth=1 $@ | sort -n | awk '{
+du -kd1 $@ | sort -n | awk '{
     if ($1>1048576) 
     {
         size=int($1/1048576)"G" 

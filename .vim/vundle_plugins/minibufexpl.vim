@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'sontek/minibufexpl.vim.git'
+  Plugin 'fholgado/minibufexpl.vim'
   finish
 endif

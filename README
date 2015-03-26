@@ -10,5 +10,6 @@ git submodule add <git://github ...> .vim/bundle/<submodule-name>
 
 
 New vim:
-git clone git@github.com:idoa01/dotfiles.git dotfiles
-git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
+1. git clone git@github.com:idoa01/dotfiles.git dotfiles
+2. git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
+3. install plugins from command line: `vim +PluginInstall +qall`

@@ -244,7 +244,7 @@ if [ -f "$HOME/.rvm/scripts/rvm" ]
 then 
     source ~/.rvm/scripts/rvm
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-    rvm use 1.9.3
+    #rvm use 2.1.3
 fi
 
 if [ -f "$HOME/.bash_ec2.sh" ]; then
@@ -252,6 +252,14 @@ if [ -f "$HOME/.bash_ec2.sh" ]; then
 fi
 export CONTENT_ACTIVATION_DEV_DB_HOST=int16
 
+# aws credentials 
+# [ -f /home/ido/.bash_aws ] && source /home/ido/.bash_aws
+
 #logamazon:
 export DEV_PEM=$HOME/.ssh/dev.pem
 export AWS_CONFIG_FILE=$HOME/.aws-config
+
+# added by travis gem
+[ -f /home/ido/.travis/travis.sh ] && source /home/ido/.travis/travis.sh
+
+if [ -f ~/.ssh/dev.pem ]; then ssh-add ~/.ssh/dev.pem &> /dev/null; fi

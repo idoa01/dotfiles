@@ -14,3 +14,8 @@ New vim:
 2. git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
 3. install fonts for airline: https://powerline.readthedocs.org/en/master/installation.html, http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
 4. install plugins from command line: `vim +PluginInstall +qall`
+5. compile command-t for system: 
+   rvm use system
+   cd ~/.vim/bundle/command-t/ruby/command-t 
+   ruby extconf.rb
+   make

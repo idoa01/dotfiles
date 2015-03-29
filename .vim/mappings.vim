@@ -4,8 +4,8 @@
 
 " Set leader to ,
 " Note: This line MUST come before any <leader> mappings
-let mapleader=","
-let maplocalleader = "\\"
+" let mapleader=","
+" let maplocalleader = "\\"
 
 " -----------------------
 " Unmapped While Learning
@@ -58,6 +58,13 @@ vnoremap / /\v
 
 " Don't move on *
 nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+
+" ---------------
+" Buffers
+" ---------------
+nmap ,, :bp<CR> "  Prev buffer
+nmap .. :bn<CR> "  Next buffer
+
 
 " ---------------
 " Window Movement

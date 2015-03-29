@@ -19,3 +19,4 @@ New vim:
    cd ~/.vim/bundle/command-t/ruby/command-t 
    ruby extconf.rb
    make
+6. install silversearcher: `aptitude install silversearcher-ag`

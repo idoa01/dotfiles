@@ -3,7 +3,7 @@
 ```bash
 cd
 git clone git@github.com:idoa01/dotfiles.git dotfiles
-git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
+git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/vundle
 git submodule init
 git submodule update --init --recursive
 ```

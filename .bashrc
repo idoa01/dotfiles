@@ -32,6 +32,15 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# set xterm to 256color for applications that chek for that.
+if [ "$COLORTERM" = "gnome-terminal" ] || [ "$COLORTERM" = "xfce4-terminal" ]
+then
+    export TERM=xterm-256color
+elif [ "$COLORTERM" = "rxvt-xpm" ]
+then
+    export TERM=rxvt-256color
+fi
+
 #virtualenv stuff
 export WORKON_HOME=$HOME/.virtualenvs 
 [ -x /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh

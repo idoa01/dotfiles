@@ -1,9 +1,6 @@
-[user]
-	name = Ido Abramovich
-	email = github.sf17@abramovich.info
-[github]
-	user = idoa01
-	token = TOKEN 
+[include]
+  # For username / creds / etc
+  path = ~/.gitconfig.local
 [color]
   branch = auto
   diff = auto

@@ -2,6 +2,20 @@ git clone git@github.com:idoa01/dotfiles.git dotfiles
 git submodule init
 git submodule update --init --recursive
 
+GitHub
+------
+**`~/.gitconfig.local:`**
+```
+[user]
+  name = Ido Abramovich
+  email = email@company.com
+[github]
+  user = idoa01
+  token = a123uber456secret789ceprivate000key78
+[credential]
+  helper = osxkeychain
+```
+
 
 Adding submodules:
 ------------------

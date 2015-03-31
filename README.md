@@ -1,6 +1,6 @@
-git clone git@github.com:idoa01/dotfiles.git dotfiles
-git submodule init
-git submodule update --init --recursive
+git clone git@github.com:idoa01/dotfiles.git dotfiles  
+git submodule init  
+git submodule update --init --recursive  
 
 GitHub
 ------
@@ -19,11 +19,12 @@ GitHub
 
 Adding submodules:
 ------------------
-cd ~/dotfiles
-git submodule add <git://github ...> .vim/bundle/<submodule-name>
+1. cd ~/dotfiles
+2. git submodule add <git://github ...> .vim/bundle/<submodule-name>
 
 
 New vim:
+-------
 1. git clone git@github.com:idoa01/dotfiles.git dotfiles
 2. git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
 3. install fonts for airline: https://powerline.readthedocs.org/en/master/installation.html, http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin

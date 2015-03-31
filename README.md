@@ -52,5 +52,7 @@ link files to home:
 
 # Adding submodules:
 ------------------
-1. cd ~/dotfiles
-2. git submodule add <git://github ...> .vim/bundle/<submodule-name>
+```bash
+cd ~/dotfiles
+git submodule add <git://github ...> .vim/bundle/<submodule-name>
+```

@@ -43,13 +43,8 @@ link files to home:
 ## vim
 1. install fonts for airline: https://powerline.readthedocs.org/en/master/installation.html, http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
 2. install silversearcher: `aptitude install silversearcher-ag`
-3. compile command-t for system: 
-  1. `rvm use system`
-  2. `cd ~/.vim/bundle/command-t/ruby/command-t`
-  3. `ruby extconf.rb`
-  4. `make`
-4. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation
-5. install plugins from command line: `vim +PluginInstall +qall`
+3. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation
+4. install plugins from command line: `vim +PluginInstall +qall`
 
 # Adding submodules:
 ------------------

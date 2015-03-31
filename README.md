@@ -48,7 +48,8 @@ link files to home:
   2. `cd ~/.vim/bundle/command-t/ruby/command-t`
   3. `ruby extconf.rb`
   4. `make`
-4. install plugins from command line: `vim +PluginInstall +qall`
+4. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation
+5. install plugins from command line: `vim +PluginInstall +qall`
 
 # Adding submodules:
 ------------------

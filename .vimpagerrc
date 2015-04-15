@@ -7,6 +7,7 @@
 
 " use light fonts on dark background
 "set background=dark
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" All of the plugins are installed with Vundle from this file.
+source ~/.vim/vundle.vim
+
 autocmd BufRead * :AnsiEsc

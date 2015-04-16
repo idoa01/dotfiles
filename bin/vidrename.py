@@ -2,7 +2,7 @@
 import sys
 import re
 from optparse import OptionParser
-    
+
 usage = "usage: %prog [-v*] SOURCE"
 version = "%prog 0.1 Alpha"
 parser = OptionParser(usage=usage,version=version)
@@ -55,13 +55,14 @@ group_names =  {
       "fqm"  : "FQM",
       "sys"  : "SYS",
        "w4f" : "W4F",
+       "bia" : "BiA",
      "asap"  : "ASAP",
      "river" : "RiVER",
     "fever"  : "FEVER",
       "notv" : "NoTV",
       "2hd"  : "2HD" }
 
-original_filename = args[0] 
+original_filename = args[0]
 filename = original_filename.lower()
 
 def season_episode(text):

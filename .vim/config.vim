@@ -35,6 +35,7 @@ set cmdheight=2    " Make the command area two lines high
 set encoding=utf-8
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
+let &titleold="Terminal" " Default is "Thanks for flying Vim", remove this.
 " Disable tooltips for hovering keywords in Vim
 if exists('+ballooneval')
   " This doesn't seem to stop tooltips for Ruby files

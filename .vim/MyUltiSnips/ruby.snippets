@@ -30,6 +30,23 @@ rescue
 end
 endsnippet
 
+snippet defc "A Faraday connection method" b
+def ${1:connection}
+	conn = Faraday.new(:url => ${2:@url}) do |faraday|
+		faraday.request :json
+    
+		${3:if ${4:@logger}
+			faraday.response :logger, $4
+		end}
+		faraday.response :json
+    
+		faraday.adapter Faraday.default_adapter
+		faraday.use Faraday::Response::RaiseError
+	end
+	return conn
+end
+endsnippet
+
 snippet For "(<from>..<to>).each { |<i>| <block> }"
 (${1:from}..${2:to}).each { |${3:i}| $0 }
 endsnippet

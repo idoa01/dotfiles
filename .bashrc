@@ -259,7 +259,7 @@ fi
 if [ -f "$HOME/.bash_ec2.sh" ]; then
     source ~/.bash_ec2.sh
 fi
-export CONTENT_ACTIVATION_DEV_DB_HOST=int16
+export CONTENT_ACTIVATION_DEV_DB_HOST=int18
 
 # aws credentials 
 # [ -f /home/ido/.bash_aws ] && source /home/ido/.bash_aws
@@ -272,3 +272,7 @@ export AWS_CONFIG_FILE=$HOME/.aws-config
 [ -f /home/ido/.travis/travis.sh ] && source /home/ido/.travis/travis.sh
 
 if [ -f ~/.ssh/dev.pem ]; then ssh-add ~/.ssh/dev.pem &> /dev/null; fi
+# AWS tunnel alias definitions.
+if [ -f ~/.aws_tunnels.sh ]; then
+    . ~/.aws_tunnels.sh
+fi

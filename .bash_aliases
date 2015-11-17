@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.aliases  -- examples of fancy aliases
 alias	loadaliases='source ~/.bash_aliases'
 # Basic aliases

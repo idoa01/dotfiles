@@ -34,10 +34,11 @@ link files to home:
   8 .mongorc2.js -> /home/ido/dotfiles/.mongorc.js
   9 .vimpagerrc -> /home/ido/dotfiles/.vimpagerrc
  10 .pryrc -> /home/ido/dotfiles/.pryrc
- 11 .bash -> dotfiles/.bash/
+ 11 .bash -> /home/ido/dotfiles/.bash/
  12 .vim -> /home/ido/dotfiles/.vim/
  13 .vimrc -> /home/ido/dotfiles/.vimrc
  14 .fonts -> /home/ido/dotfiles/.fonts/
+ 15 .tmux -> /home/ido/dotfiles/.tmux
 ```
 
 ## vim

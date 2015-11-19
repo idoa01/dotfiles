@@ -272,6 +272,7 @@ export AWS_CONFIG_FILE=$HOME/.aws-config
 [ -f /home/ido/.travis/travis.sh ] && source /home/ido/.travis/travis.sh
 
 if [ -f ~/.ssh/dev.pem ]; then ssh-add ~/.ssh/dev.pem &> /dev/null; fi
+if [ -f ~/.ssh/amobeeil.pem ]; then ssh-add ~/.ssh/amobeeil.pem &> /dev/null; fi
 # AWS tunnel alias definitions.
 if [ -f ~/.aws_tunnels.sh ]; then
     . ~/.aws_tunnels.sh

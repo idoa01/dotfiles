@@ -39,10 +39,19 @@ link files to home:
  13 .vimrc -> /home/ido/dotfiles/.vimrc
  14 .fonts -> /home/ido/dotfiles/.fonts/
  15 .tmux -> /home/ido/dotfiles/.tmux
+ 16 .config/fontconfig/conf.d/10-powerline-symbols.conf -> /home/ido/dotfiles/.config/fontconfig/conf.d/10-powerline-symbols.conf
 ```
+
+
+## fonts
+1. awesome-terminal-fonts: https://github.com/gabrielelana/awesome-terminal-fonts
+2. powerline: https://github.com/powerline/powerline
 
 ## vim
 1. install fonts for airline: https://powerline.readthedocs.org/en/master/installation.html, http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
+  a. (OSX) if you don't have fontcache installed, one way to get it is to run brew install fontconfig
+  b. setup symlinks for .fonts and .config/fontconfig/conf.d/10-powerline-symbols.conf
+  c. run fc-cache -fv ~/.fonts to let freetype2 know of those fonts
 2. install silversearcher: `aptitude install silversearcher-ag`
 3. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation
 4. install plugins from command line: `vim +PluginInstall +qall`

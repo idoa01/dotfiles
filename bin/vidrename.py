@@ -21,7 +21,9 @@ d = { "hdtv" : "HDTV",
     "dvdrip" : "DVDRip",
       "pdtv" : "PDTV",
     "repack" : "REPACK",
+    "webrip" : "WEBRip",
     "proper" : "PROPER",
+  "internal" : "INTERNAL",
        "cd1" : "CD1",
        "cd2" : "CD2",
         "of" : "of",
@@ -62,6 +64,8 @@ group_names =  {
       "notv" : "NoTV",
       "2hd"  : "2HD" }
 
+uploader_names = ["ettv"]
+
 original_filename = args[0]
 filename = original_filename.lower()
 
@@ -71,11 +75,13 @@ def season_episode(text):
     return tuple(map(lambda x: '%.2d' % int(x), filter(lambda x: x, se.match(text).groups())))
 
 
-parts = filter(None, re.split(r'[. -]', filename))
+parts = filter(None, re.split(r'[. \[\]-]', filename))
 output_parts = []
 for part in parts:
     if part in group_names:
         output_parts.append(group_names[part])
+    elif part in uploader_names:
+        continue
     elif part in d:
         output_parts.append(d[part])
     elif year_re.match(part):

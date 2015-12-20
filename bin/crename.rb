@@ -3,8 +3,14 @@ require 'optparse'
 $:.unshift File.dirname(__FILE__)
 
 def crename(filename, options)
+  num = nil
+  if options[:num]
+    num = options[:num]
+  elsif filename =~ /\b(\d{3})\b/
+    num = filename.scan(/\b(\d{3})\b/)[0][0]
+  end
   new_filename = filename.gsub(" ","_").gsub(/\([a-zA-Z]+[^)]*\)/,"").gsub(/[()]/,"").gsub(/_+\./,".")
-  new_filename = options[:num] + "_" + new_filename if options[:num]
+  new_filename = num + "_" + new_filename if num
   $stderr.puts "#{if options[:rename] then "Renaming" else "Will rename" end} #{filename.inspect} to #{new_filename.inspect}" if options[:verbose]
   File.rename(filename, new_filename) if options[:rename]
 end

@@ -4,11 +4,12 @@ $:.unshift File.dirname(__FILE__)
 
 def crename(filename, options)
   num = nil
-  if options[:num]
+  if not options[:num].nil?
     num = options[:num]
   elsif filename =~ /\b(\d{3})\b/
     num = filename.scan(/\b(\d{3})\b/)[0][0]
   end
+  puts num
   new_filename = filename.gsub(" ","_").gsub(/\([a-zA-Z]+[^)]*\)/,"").gsub(/[()]/,"").gsub(/_+\./,".")
   new_filename = num + "_" + new_filename if num
   $stderr.puts "#{if options[:rename] then "Renaming" else "Will rename" end} #{filename.inspect} to #{new_filename.inspect}" if options[:verbose]
@@ -23,6 +24,9 @@ if __FILE__ == $0
     end
     opts.on("-n", "--num NUMBER", "use prefix") do |n|
       options[:num] = n
+    end
+    opts.on("-N", "--no-number", "do not use prefix") do |n|
+      options[:num] = false
     end
     opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
       options[:verbose] = v

@@ -1,2 +1,3 @@
 *.launch
 /.gitconfig.local
+.DS_Store

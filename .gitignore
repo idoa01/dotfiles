@@ -1,3 +1,5 @@
 *.launch
 /.gitconfig.local
+/.lein/repl-*
+/.lein/self-installs
 .DS_Store

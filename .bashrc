@@ -277,3 +277,19 @@ if [ -f ~/.ssh/amobeeil.pem ]; then ssh-add ~/.ssh/amobeeil.pem &> /dev/null; fi
 if [ -f ~/.aws_tunnels.sh ]; then
     . ~/.aws_tunnels.sh
 fi
+
+# brew bash completions
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# Java Home
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+
+# HADOOP Environment variables
+export HADOOP_PREFIX=/usr/local/Cellar/hadoop/2.6.0/libexec
+export HADOOP_HOME=$HADOOP_PREFIX
+export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop
+
+# added by canals gem
+[ -f /Users/ido/.canals/canals.sh ] && source /Users/ido/.canals/canals.sh

@@ -1,5 +1,7 @@
 *.launch
 /.gitconfig.local
 /.lein/repl-*
+/.lein/credentials*
+/.lein/tmp-atom-jars
 /.lein/self-installs
 .DS_Store

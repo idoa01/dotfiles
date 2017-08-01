@@ -13,7 +13,8 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
-PATH=${PATH}:~/bin:~/dotfiles/bin
+PATH=${PATH}:/usr/local/sbin:~/bin:~/dotfiles/bin:
+
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -266,7 +267,7 @@ export CONTENT_ACTIVATION_DEV_DB_HOST=int18
 
 #logamazon:
 export DEV_PEM=$HOME/.ssh/dev.pem
-export AWS_CONFIG_FILE=$HOME/.aws-config
+# export AWS_CONFIG_FILE=$HOME/.aws-config
 
 # added by travis gem
 [ -f /home/ido/.travis/travis.sh ] && source /home/ido/.travis/travis.sh
@@ -284,7 +285,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # Java Home
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 # HADOOP Environment variables
 export HADOOP_PREFIX=/usr/local/Cellar/hadoop/2.6.0/libexec
@@ -293,3 +294,13 @@ export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop
 
 # added by canals gem
 [ -f /Users/ido/.canals/canals.sh ] && source /Users/ido/.canals/canals.sh
+
+export RAILS_ENV=development
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=/$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

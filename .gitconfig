@@ -42,5 +42,7 @@
   ra = !git r --all
   co = checkout
   mylog = log origin/master..HEAD
+  sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+  sapply = "!f() { git stash apply stash^{/$*}; }; f"
 [core]
   excludefile = /home/ido/.gitignore

@@ -1,30 +1,16 @@
 #!/bin/bash
-PROJECT=$(basename `pwd`)
-printf "Leading REPL for $PROJECT"
-#tmux new-session -d 'vim project.clj'
-tmux new -d -s $PROJECT
-tmux split-window -p 33
-tmux select-pane -t1
-#tmux send-keys "LEIN_REPL_PORT=$port lein repl" C-m
-tmux send-keys "lein repl" C-m
-#while ! nc -z localhost $port; do printf "."; sleep 1; done
-#echo
-while true; do
-  nrepl=`tmux capture-pane -t1 -p | grep -o "nrepl://.*"`
-  if [ $? -eq 0 ]; then
-    echo
-    break
-  fi
-  printf "."
-  sleep 1
-done
-echo "nREPL server started on $nrepl"
-
+port=8000
+printf "Leading REPL on port $port"
+tmux new-session -d 'vim project.clj'
+tmux split-window -p 33 
+tmux select-pane -t1 
+tmux send-keys "LEIN_REPL_PORT=$port lein repl" C-m
+while ! nc -z localhost $port; do printf "."; sleep 1; done
+echo
 #tmux new-session -d 'vim'
 tmux select-pane -t0
-tmux send-keys "vim project.clj" C-m
 tmux send-keys ":NERDTreeToggle" C-m
-#tmux send-keys ":FireplaceConnect nrepl://localhost:$port" C-m C-m
+tmux send-keys ":FireplaceConnect nrepl://localhost:$port" C-m C-m
 tmux select-pane -t1
 tmux split-window -h
 tmux select-pane -t2

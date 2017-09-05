@@ -53,7 +53,7 @@ link files to home:
   b. setup symlinks for .fonts and .config/fontconfig/conf.d/10-powerline-symbols.conf
   c. run fc-cache -fv ~/.fonts to let freetype2 know of those fonts
 2. install silversearcher: `aptitude install silversearcher-ag`
-3. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation
+3. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation (`cd ~/.vim/bundle/YouCompleteMe; ./install.py --clang-completer --tern-completer --gocode-completer`)
 4. install plugins from command line: `vim +PluginInstall +qall`
 
 # Adding submodules:

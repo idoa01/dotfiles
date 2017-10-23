@@ -55,6 +55,7 @@ link files to home:
 2. install silversearcher: `aptitude install silversearcher-ag`
 3. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation (`cd ~/.vim/bundle/YouCompleteMe; ./install.py --clang-completer --tern-completer --gocode-completer`)
 4. install plugins from command line: `vim +PluginInstall +qall`
+5. run `npm install` in the `bundle/tern_for_vim` directory.
 
 # Adding submodules:
 ------------------

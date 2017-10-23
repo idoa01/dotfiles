@@ -41,7 +41,7 @@ link files to home:
  15 .tmux -> /home/ido/dotfiles/.tmux
  16 .config/fontconfig/conf.d/10-powerline-symbols.conf -> /home/ido/dotfiles/.config/fontconfig/conf.d/10-powerline-symbols.conf
 ```
-
+install bash-git-prompt: `brew install bash-git-prompt`
 
 ## fonts
 1. awesome-terminal-fonts: https://github.com/gabrielelana/awesome-terminal-fonts

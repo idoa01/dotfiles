@@ -23,7 +23,7 @@
   aa = add --all
   au = add -u
   dc = diff --cached
-  ci = commit
+  ci = commit -S
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p

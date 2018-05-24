@@ -3,7 +3,6 @@
 ```bash
 cd
 git clone git@github.com:idoa01/dotfiles.git dotfiles
-git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/vundle
 git submodule init
 git submodule update --init --recursive
 ```
@@ -39,7 +38,7 @@ link files to home:
  13 .vimrc -> /home/ido/dotfiles/.vimrc
  14 .fonts -> /home/ido/dotfiles/.fonts/
  15 .tmux -> /home/ido/dotfiles/.tmux
- 16 .config/fontconfig/conf.d/10-powerline-symbols.conf -> /home/ido/dotfiles/.config/fontconfig/conf.d/10-powerline-symbols.conf
+ ~~16 .config/fontconfig/conf.d/10-powerline-symbols.conf -> /home/ido/dotfiles/.config/fontconfig/conf.d/10-powerline-symbols.conf~~
 ```
 install bash-git-prompt: `brew install bash-git-prompt`
 
@@ -58,9 +57,6 @@ install bash-git-prompt: `brew install bash-git-prompt`
   b. `brew cask install font-hack-nerd-font`
   c. setup Terminal with Hack-Nerd-Font
 3. install silversearcher: `aptitude install silversearcher-ag`
-4. compile YouCompleteMe: https://github.com/Valloric/YouCompleteMe#installation (`cd ~/.vim/bundle/YouCompleteMe; ./install.py --clang-completer --tern-completer --gocode-completer`)
-5. install plugins from command line: `vim +PluginInstall +qall`
-6. run `npm install` in the `bundle/tern_for_vim` directory.
 
 # Adding submodules:
 ------------------

@@ -48,25 +48,27 @@ endif
 " Behaviors
 " ---------------
 syntax enable
-set backup             " Turn on backups
-set autoread           " Automatically reload changes if detected
-set wildmenu           " Turn on WiLd menu
-set hidden             " Change buffer - without saving
-set history=768        " Number of things to remember in history.
-set cf                 " Enable error files & error jumping.
-set clipboard+=unnamed " Yanks go on clipboard instead.
-set autowrite          " Writes on make/shell commands
-" set timeoutlen=450     " Time to wait for a command (after leader for example).
+set nocompatible          " be iMproved
+filetype plugin indent on " Automatically detect file types. (must turn on after Vundle)
+set backup                " Turn on backups
+set autoread              " Automatically reload changes if detected
+set wildmenu              " Turn on WiLd menu
+set hidden                " Change buffer - without saving
+set history=768           " Number of things to remember in history.
+set cf                    " Enable error files & error jumping.
+set clipboard+=unnamed    " Yanks go on clipboard instead.
+set autowrite             " Writes on make/shell commands
+" set timeoutlen=450        " Time to wait for a command (after leader for example).
 set ttimeout
-set ttimeoutlen=100    " Time to wait for a command (after leader for example).
-set nofoldenable       " Disable folding entirely.
-set foldlevelstart=99  " I really don't like folds.
+set ttimeoutlen=100       " Time to wait for a command (after leader for example).
+set nofoldenable          " Disable folding entirely.
+set foldlevelstart=99     " I really don't like folds.
 set formatoptions=crql
-set iskeyword+=\$,-   " Add extra characters that are valid parts of variables
-set nostartofline      " Don't go to the start of the line after some commands
-set scrolloff=3        " Keep three lines below the last line when scrolling
-set gdefault           " this makes search/replace global by default
-set switchbuf=useopen  " Switch to an existing buffer if one exists
+set iskeyword+=\$,-       " Add extra characters that are valid parts of variables
+set nostartofline         " Don't go to the start of the line after some commands
+set scrolloff=3           " Keep three lines below the last line when scrolling
+set gdefault              " this makes search/replace global by default
+set switchbuf=useopen     " Switch to an existing buffer if one exists
 
 " ---------------
 " Text Format

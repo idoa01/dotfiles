@@ -12,9 +12,9 @@
 " -----------------------
 
 " No-op ^ and $ while learning H and L
-noremap ^ <nop>
-noremap $ <nop>
-nnoremap <leader>sc <nop>
+" noremap ^ <nop>
+" noremap $ <nop>
+" nnoremap <leader>sc <nop>
 
 " ---------------
 " Regular Mappings

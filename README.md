@@ -42,19 +42,23 @@ link files to home:
 
 ## General Requirements
   1. [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) fancy bash prompt for git users
-    * `brew install bash-git-prompt`
+      1.  `brew install bash-git-prompt`
   2. [Source Code Nerd Font Complete](https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts) Custom font for bash and vim
-    * `brew tap caskroom/fonts`
-    * `brew cask install font-hack-nerd-font`
-    * setup Terminal with Hack-Nerd-Font
+      1. `brew tap caskroom/fonts`
+      2. `brew cask install font-hack-nerd-font`
+      3. setup Terminal with Hack-Nerd-Font
   3. [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) Fast code line searches
-    * `brew install the_silver_searcher`
+      1. `brew install the_silver_searcher`
 
 ## Plugin Requirements
   1. [Fugitive](https://github.com/tpope/vim-fugitive) Requires Git to be
      installed.
-  2. [Ale](https://github.com/w0rp/ale) Uses various linding and style
+  2. [Ale](https://github.com/w0rp/ale) Uses various linting and style
      checking tools that are sepately installed.
+      1. [ESLint](https://eslint.org/docs/user-guide/getting-started#global-installation-and-usage): JavaScript Linting
+          1. `npm install -g eslint`
+          2. `cd`
+          3. `eslint --init`
   3. [fzf.vim](https://github.com/junegunn/fzf.vim) Requires
      [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
      installed.

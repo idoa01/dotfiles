@@ -1,10 +1,10 @@
-# Installation
-## Repository
+# idoa01's DotFiles
+
+## Installation
 ```bash
 cd
 git clone git@github.com:idoa01/dotfiles.git dotfiles
-git submodule init
-git submodule update --init --recursive
+vim +PlugInstall +qall
 ```
 
 ## GitHub
@@ -38,29 +38,25 @@ link files to home:
  13 .vimrc -> /home/ido/dotfiles/.vimrc
  14 .fonts -> /home/ido/dotfiles/.fonts/
  15 .tmux -> /home/ido/dotfiles/.tmux
- ~~16 .config/fontconfig/conf.d/10-powerline-symbols.conf -> /home/ido/dotfiles/.config/fontconfig/conf.d/10-powerline-symbols.conf~~
 ```
-install bash-git-prompt: `brew install bash-git-prompt`
 
-## fonts
-1. ~~awesome-terminal-fonts: https://github.com/gabrielelana/awesome-terminal-fonts~~
-2. ~~powerline: https://github.com/powerline/powerline~~
-3. nerd-fonts: http://github.com/ryanoasis/nerd-fonts
+## General Requirements
+  1. [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) fancy bash prompt for git users
+    a. `brew install bash-git-prompt`
+  2. [Source Code Nerd Font Complete](https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts) Custom font for bash and vim
+    a. `brew tap caskroom/fonts`
+    b. `brew cask install font-hack-nerd-font`
+    c. setup Terminal with Hack-Nerd-Font
+  3. [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) Fast code line searches
+    a. `brew install the_silver_searcher`
 
-## vim
-1. ~~install fonts for airline: https://powerline.readthedocs.org/en/master/installation.html, http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin~~
-  a. ~~(OSX) if you don't have fontcache installed, one way to get it is to run brew install fontconfig~~
-  b. ~~setup symlinks for .fonts and .config/fontconfig/conf.d/10-powerline-symbols.conf~~
-  c. ~~run fc-cache -fv ~/.fonts to let freetype2 know of those fonts~~
-2. install nerd fonts: https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
-  a. `brew tap caskroom/fonts`
-  b. `brew cask install font-hack-nerd-font`
-  c. setup Terminal with Hack-Nerd-Font
-3. install silversearcher: `aptitude install silversearcher-ag`
-
-# Adding submodules:
-------------------
-```bash
-cd ~/dotfiles
-git submodule add <git://github ...> .vim/bundle/<submodule-name>
-```
+## Plugin Requirements
+  1. [Fugitive](https://github.com/tpope/vim-fugitive) Requires Git to be
+     installed.
+  2. [Ale](https://github.com/w0rp/ale) Uses various linding and style
+     checking tools that are sepately installed.
+  3. [fzf.vim](https://github.com/junegunn/fzf.vim) Requires
+     [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
+     installed.
+  4. [Source Code Nerd Font Complete](https://git.io/vPBU6) The custom font I'm using
+     for vim-airline and vim-devicons.

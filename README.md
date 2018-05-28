@@ -59,6 +59,11 @@ link files to home:
           1. `npm install -g eslint`
           2. `cd`
           3. `eslint --init`
+      2. [Joker](https://github.com/candid82/joker): Clojure Linting
+          1. `brew install candid82/brew/joker`
+      3. [gofmt](https://golang.org/cmd/gofmt): Go Linting (installed by default)
+      4. [RuboCop](https://github.com/bbatsov/rubocop#cops): Ruby Linting
+          1. `rvm @global do gem install rubocop`
   3. [fzf.vim](https://github.com/junegunn/fzf.vim) Requires
      [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
      installed.

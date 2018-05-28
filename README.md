@@ -42,13 +42,13 @@ link files to home:
 
 ## General Requirements
   1. [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) fancy bash prompt for git users
-    a. `brew install bash-git-prompt`
+    * `brew install bash-git-prompt`
   2. [Source Code Nerd Font Complete](https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts) Custom font for bash and vim
-    a. `brew tap caskroom/fonts`
-    b. `brew cask install font-hack-nerd-font`
-    c. setup Terminal with Hack-Nerd-Font
+    * `brew tap caskroom/fonts`
+    * `brew cask install font-hack-nerd-font`
+    * setup Terminal with Hack-Nerd-Font
   3. [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) Fast code line searches
-    a. `brew install the_silver_searcher`
+    * `brew install the_silver_searcher`
 
 ## Plugin Requirements
   1. [Fugitive](https://github.com/tpope/vim-fugitive) Requires Git to be

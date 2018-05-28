@@ -7,7 +7,7 @@
 
 " use light fonts on dark background
 "set background=dark
-" All of the plugins are installed with Vundle from this file.
-source ~/.vim/vundle.vim
+" All of the plugins are installed with vim-plug from this file.
+source ~/.vim/plug.vim
 
 autocmd BufRead * :AnsiEsc

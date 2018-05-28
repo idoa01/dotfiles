@@ -304,3 +304,7 @@ source $(brew --prefix nvm)/nvm.sh
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=/$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Set GPG TTY
+export GPG_TTY=$(tty)

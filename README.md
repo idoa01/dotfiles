@@ -67,5 +67,7 @@ link files to home:
   3. [fzf.vim](https://github.com/junegunn/fzf.vim) Requires
      [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) to be
      installed.
-  4. [Source Code Nerd Font Complete](https://git.io/vPBU6) The custom font I'm using
+  4. For syntax highlighting in [fzf.vim](https://github.com/junegunn/fzf.vim) install one
+     of the following: [Highlight](http://www.andre-simon.de/doku/highlight/en/highlight.php)/[CodeRey](http://coderay.rubychan.de/)/[Rouge](https://github.com/jneen/rouge)
+  5. [Source Code Nerd Font Complete](https://git.io/vPBU6) The custom font I'm using
      for vim-airline and vim-devicons.

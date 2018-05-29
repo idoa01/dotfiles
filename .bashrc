@@ -101,7 +101,11 @@ else
 fi
 unset color_prompt force_color_prompt
 
-[ -a $HOME/.bash/gitprompt.sh ] && source $HOME/.bash/gitprompt.sh
+#[ -a $HOME/.bash/gitprompt.sh ] && source $HOME/.bash/gitprompt.sh
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -292,6 +296,10 @@ export HADOOP_PREFIX=/usr/local/Cellar/hadoop/2.6.0/libexec
 export HADOOP_HOME=$HADOOP_PREFIX
 export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop
 
+# Apache Spark Environment variables
+export SPARK_HOME=$(brew --prefix apache-spark)/libexec
+
+
 # added by canals gem
 [ -f /Users/ido/.canals/canals.sh ] && source /Users/ido/.canals/canals.sh
 
@@ -306,5 +314,7 @@ export GOPATH=/$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_COMPLETION_TRIGGER='~~'
+
 # Set GPG TTY
 export GPG_TTY=$(tty)

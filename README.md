@@ -40,6 +40,9 @@ link files to home:
  15 .tmux -> /home/ido/dotfiles/.tmux
 ```
 
+## Mac Setup
+  1. run `brew-install.sh` to install [Homebrew](https://brew.sh) and run the Brewfile, this will make the following brew commands redundant.
+
 ## General Requirements
   1. [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) fancy bash prompt for git users
       1.  `brew install bash-git-prompt`

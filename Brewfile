@@ -32,6 +32,7 @@ brew "candid82/brew/joker"
 # install the apps we want
 cask "homebrew/cask-fonts/font-hack-nerd-font"
 cask "alfred"
+cask "keepassxc"
 
 # install from the App Store
 brew "mas"

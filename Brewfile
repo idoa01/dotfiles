@@ -33,6 +33,7 @@ brew "candid82/brew/joker"
 cask "homebrew/cask-fonts/font-hack-nerd-font"
 cask "alfred"
 cask "keepassxc"
+cask "spotify"
 
 # install from the App Store
 brew "mas"

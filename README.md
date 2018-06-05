@@ -38,6 +38,7 @@ link files to home:
  13 .vimrc -> /home/ido/dotfiles/.vimrc
  14 .fonts -> /home/ido/dotfiles/.fonts/
  15 .tmux -> /home/ido/dotfiles/.tmux
+ 16 .aprc => /home/ido/dotfiles/.aprc
 ```
 
 ## Mac Setup

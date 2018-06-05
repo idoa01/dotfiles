@@ -1,0 +1,14 @@
+# Commonly used screens these days easily fit more than 80 characters.
+Metrics/LineLength:
+  Max: 200
+
+Sytle/NumericLiterals:
+  Enabled: false
+
+# don't force single quotes OR double quotes. both are just fine.
+Sytle/StringLiterals:
+  Enabled: false
+
+# don't need a comment on each class
+Style/Documentation:
+  Enabled: false

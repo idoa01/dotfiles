@@ -32,7 +32,7 @@ d = { "hdtv" : "HDTV",
        "cd2" : "CD2",
         "of" : "of",
       'x264' : 'x264',
-      'h264' : 'h264',
+      'h264' : 'H264',
       '720p' : '720p',
        'mp4' : 'mp4',
        'mkv' : 'mkv',
@@ -109,7 +109,7 @@ for part in parts:
 
 try:
     xvid_index = output_parts.index('HDTV') + 1
-    if output_parts[xvid_index] not in ('XviD', 'x264', 'h264'):
+    if output_parts[xvid_index] not in ('XviD', 'x264', 'H264'):
         if output_parts[-1] == 'avi':
             output_parts.insert(xvid_index,'XviD')
         else:
@@ -117,7 +117,7 @@ try:
 except Exception, e:
     pass
 new_filename = '.'.join(output_parts)
-new_filename = new_filename.replace('XviD.','XviD-').replace('x264.','x264-').replace('h264.','h264-').replace('WEB.Dl','WEB-DL')
+new_filename = new_filename.replace('XviD.','XviD-').replace('x264.','x264-').replace('H264.','H264-').replace('WEB.Dl','WEB-DL')
 new_filename = new_filename.replace('Nine.Nine','Nine-Nine')
 new_filename = new_filename[0].upper() + new_filename[1:]
 #if options.verbose:

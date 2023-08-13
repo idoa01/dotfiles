@@ -3,35 +3,37 @@ cask_args appdir: '/Applications'
 
 # add some casks
 tap "candid82/brew"
-tap "caskroom/fonts"
-
-# get brew cask for apps
-tap 'caskroom/cask'
-
+tap "homebrew/cask-fonts"
 
 # install scripts we want
-brew "bash-completion"
-brew "bash-git-prompt"
+brew "asdf"
+brew "autojump"
+brew "awscli"
+brew "bpytop"
+brew "cmake"
 brew "coreutils"
 brew "ctags"
+brew "exa"
 brew "fd"
 brew "git"
-brew "pinentry"
+brew "git-delta"
 brew "gnupg"
 brew "htop"
 brew "jq"
-brew "macvim", args: ["with-override-system-vim"]
 brew "md5sha1sum"
+brew "pinentry"
+brew "pyenv"
 brew "ripgrep"
 brew "the_silver_searcher"
 brew "tmux"
+brew "vim"
 brew "watch"
 brew "wget"
-brew "candid82/brew/joker"
 
 # install the apps we want
+#cask "alfred"
 cask "homebrew/cask-fonts/font-hack-nerd-font"
-cask "alfred"
+cask "iterm2"
 cask "keepassxc"
 cask "spotify"
 

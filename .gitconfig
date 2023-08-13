@@ -5,15 +5,40 @@
   branch = auto
   diff = auto
   status = auto
+[core]
+  # pager = delta
+  editor = code --wait
+[delta]
+  features = side-by-side line-numbers decorations
+  syntax-theme = Dracula
+  plus-style = syntax "#003800"
+  minus-style = syntax "#3f0001"
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = cyan box ul
+[delta "line-numbers"]
+  line-numbers-left-style = cyan
+  line-numbers-right-style = cyan
+  line-numbers-minus-style = 124
+  line-numbers-plus-style = 28
+[xinteractive]
+  diffFilter = delta --color-only
 [diff]
-  external = git_diff_wrapper
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-  tool = splice
-[mergetool "splice"]
-  cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-  trustExitCode = true
-[pager]
-  diff =
+  tool = vscode
+  renameLimit = 10000
+[mergetool]
+  cmd = code --wait $MERGED
+# [merge]
+#   tool = splice
+# [mergetool "splice"]
+#   cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+#   trustExitCode = true
 [push]
   default = upstream
 [alias]
@@ -44,5 +69,6 @@
   mylog = log origin/master..HEAD
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
   sapply = "!f() { git stash apply stash^{/$*}; }; f"
+  stsh = stash --include-untracked
 [core]
   excludefile = /home/ido/.gitignore

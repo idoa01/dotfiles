@@ -1,3 +1,4 @@
+#timer=$(($(gdate +%s%N)/1000000))
 zmodload zsh/zprof
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -79,7 +80,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git poetry)
-plugins=(git)
+plugins=(git pyenv-lazy)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -161,11 +162,6 @@ timezsh() {
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f /usr/local/opt/asdf/asdf.sh ] && source /usr/local/opt/asdf/asdf.sh
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv init --path)"
-fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -174,3 +170,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
+#now=$(($(gdate +%s%N)/1000000))
+#elapsed=$(($now-$timer))
+#echo "timer "$elapsed

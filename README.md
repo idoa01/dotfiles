@@ -39,7 +39,8 @@ link files to home:
  14 .fonts -> /home/ido/dotfiles/.fonts/
  15 .tmux -> /home/ido/dotfiles/.tmux
  16 .aprc => /home/ido/dotfiles/.aprc
- 16 .rubocop.yml => /home/ido/dotfiles/.rubocop.yml
+ 17 .rubocop.yml => /home/ido/dotfiles/.rubocop.yml
+ 19 .oh-my-zsh/custom => /home/ido/dotfiles/.oh-my-zsh/custom
 ```
 
 ## Mac Setup

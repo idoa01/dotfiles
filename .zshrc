@@ -1,23 +1,28 @@
 #timer=$(($(gdate +%s%N)/1000000))
-zmodload zsh/zprof
+#zmodload zsh/zprof
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/idoa/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,9 +85,14 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git poetry)
-plugins=(git pyenv-lazy)
+zstyle ':omz:plugins:nvm' lazy yes
+#plugins=(git pyenv-lazy nvm)
+plugins=(git nvm)
 
 source $ZSH/oh-my-zsh.sh
+
+# Starship
+eval "$(starship init zsh)"ß
 
 # User configuration
 
@@ -113,30 +123,38 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+#if [[ ! -f $HOME/.zinit/bin/zinint.zsh ]]; then
+#    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+#    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+#    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+#        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+#        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+#fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+#source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 # zinit light-mode for \
-#     zinit-zsh/z-a-rust \
+#     zinit-zsh/z-a-rust \ß
 #     zinit-zsh/z-a-as-monitor \
 #     zinit-zsh/z-a-patch-dl \
 #     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
+# Remove "zi" alias for default zoxide alias to work
+zinit ice atload'unalias zi'
+
 zinit light zsh-users/zsh-autosuggestions
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+#zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-syntax-highlighting
 
@@ -146,13 +164,13 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-if [ "$(command -v exa)" ]; then
+if [ "$(command -v eza)" ]; then
   unalias -m 'll'
   unalias -m 'l'
   unalias -m 'la'
   unalias -m 'ls'
-  alias ls='exa -G --color auto --icons -a'
-  alias ll='exa -l --color always --icons -a -snew'
+  alias ls='eza -G --color auto --icons -a'
+  alias ll='eza -l --color always --icons -a -snew'
 fi
 
 timezsh() {
@@ -164,12 +182,22 @@ timezsh() {
 [ -f /usr/local/opt/asdf/asdf.sh ] && source /usr/local/opt/asdf/asdf.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
+[[ ! -f ~/.zshaliases ]] || source ~/.zshaliases
+[[ ! -f ~/.zshaliases.local ]] || source ~/.zshaliases.local
+
+eval "$(zoxide init zsh --cmd cd)"
+
 #now=$(($(gdate +%s%N)/1000000))
-#elapsed=$(($now-$timer))
+#ielapsed=$(($now-$timer))
 #echo "timer "$elapsed
+
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#zprof

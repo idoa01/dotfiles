@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+unlink ~/.oh-my-zsh/custom
+$ZSH/tools/upgrade.sh
+rm -rf ~/.oh-my-zsh/custom
+ln -s ~/dotfiles/.oh-my-zsh/custom ~/.oh-my-zsh/custom

@@ -87,7 +87,7 @@ ZSH_THEME=""
 #plugins=(git poetry)
 zstyle ':omz:plugins:nvm' lazy yes
 #plugins=(git pyenv-lazy nvm)
-plugins=(git nvm)
+plugins=(git nvm dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -190,6 +190,7 @@ timezsh() {
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
 [[ ! -f ~/.zshaliases ]] || source ~/.zshaliases
 [[ ! -f ~/.zshaliases.local ]] || source ~/.zshaliases.local
+[[ ! -f ~/.zshcompdef ]] || source ~/.zshcompdef
 
 eval "$(zoxide init zsh --cmd cd)"
 

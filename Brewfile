@@ -36,7 +36,7 @@ brew "sd" # sed replacement | https://github.com/chmln/sd
 brew "procs" # ps replacement | https://github.com/dalance/procs
 brew "lazygit" # git terminal | https://github.com/jesseduffield/lazygit
 brew "zoxide" # cd replacement | https://github.com/ajeetdsouza/zoxide
-brew "bottom" # htop replacement | https://github.com/ClementTsang/botto
+brew "bottom" # htop replacement | https://github.com/ClementTsang/bottom
 brew "tre-command" # tree replacement | https://github.com/dduan/tre
 
 # install the apps we want

@@ -22,7 +22,9 @@ if status is-interactive
     alias ll='eza -l --color always --icons -a -snew'
 
     # Node version manager (brew install fnm)
-    fnm env --use-on-cd | source
+    if command -q fnm
+        fnm env --use-on-cd | source
+    end
 
     # Prompt and navigation
     starship init fish | source
@@ -30,7 +32,9 @@ if status is-interactive
     fzf --fish | source
 
     # Scoped environment loading (brew install direnv)
-    direnv hook fish | source
+    if command -q direnv
+        direnv hook fish | source
+    end
 
     # Plugin manager (fisher). To install plugins: fisher install owner/repo
     # Installed plugins are tracked in .config/fish/fish_plugins

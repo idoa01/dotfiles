@@ -1,17 +1,30 @@
+# Homebrew (absolute path so this works before brew is in PATH)
+/opt/homebrew/bin/brew shellenv fish | source
+
+# PATH (personal bins after Homebrew so they still take priority)
+fish_add_path $HOME/bin $HOME/dotfiles/bin
+
+# Environment
+set -gx GPG_TTY (tty)
+set -gx JAVA_HOME (/usr/libexec/java_home)
+
+# XDG base directories
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_CACHE_HOME $HOME/.cache
+
+# Node version manager (brew install fnm)
+if command -q fnm
+    fnm env --use-on-cd | source
+end
+
+# Scoped environment loading (brew install direnv)
+if command -q direnv
+    direnv hook fish | source
+end
+
 if status is-interactive
-    # PATH
-    fish_add_path $HOME/bin $HOME/dotfiles/bin
-
-    # Environment
-    set -gx GPG_TTY (tty)
-    set -gx JAVA_HOME (/usr/libexec/java_home)
-
-    # XDG base directories
-    set -gx XDG_CONFIG_HOME $HOME/.config
-    set -gx XDG_DATA_HOME $HOME/.local/share
-    set -gx XDG_STATE_HOME $HOME/.local/state
-    set -gx XDG_CACHE_HOME $HOME/.cache
-
     # Safe aliases
     alias rm='rm -i'
     alias cp='cp -i'
@@ -21,20 +34,10 @@ if status is-interactive
     alias ls='eza -G --color auto --icons -a'
     alias ll='eza -l --color always --icons -a -snew'
 
-    # Node version manager (brew install fnm)
-    if command -q fnm
-        fnm env --use-on-cd | source
-    end
-
     # Prompt and navigation
     starship init fish | source
     zoxide init fish --cmd cd | source
     fzf --fish | source
-
-    # Scoped environment loading (brew install direnv)
-    if command -q direnv
-        direnv hook fish | source
-    end
 
     # Plugin manager (fisher). To install plugins: fisher install owner/repo
     # Installed plugins are tracked in .config/fish/fish_plugins

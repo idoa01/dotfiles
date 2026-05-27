@@ -21,6 +21,9 @@ if status is-interactive
     alias ls='eza -G --color auto --icons -a'
     alias ll='eza -l --color always --icons -a -snew'
 
+    # Node version manager (brew install fnm)
+    fnm env --use-on-cd | source
+
     # Prompt and navigation
     starship init fish | source
     zoxide init fish --cmd cd | source

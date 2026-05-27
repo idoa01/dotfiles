@@ -21,6 +21,11 @@ if status is-interactive
     alias ls='eza -G --color auto --icons -a'
     alias ll='eza -l --color always --icons -a -snew'
 
+    # Prompt and navigation
+    starship init fish | source
+    zoxide init fish --cmd cd | source
+    fzf --fish | source
+
     # Machine-specific overrides
     if test -f $HOME/.config/fish/config.local.fish
         source $HOME/.config/fish/config.local.fish

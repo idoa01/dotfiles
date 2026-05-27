@@ -43,6 +43,49 @@ link files to home:
  19 .oh-my-zsh/custom => /home/ido/dotfiles/.oh-my-zsh/custom
 ```
 
+## Fish Shell Setup
+
+The fish config lives in `~/dotfiles/.config/fish/` and is symlinked into place.
+
+### Prerequisites
+
+```bash
+brew install fnm direnv
+```
+
+### Symlink
+
+```bash
+# Remove any existing fish skeleton first (safe — it's just the default empty config)
+rm -rf ~/.config/fish
+ln -s ~/dotfiles/.config/fish ~/.config/fish
+```
+
+### What's gitignored
+
+- `fish_variables` — written by fish at runtime; contains no user config
+- `config.local.fish` — machine-specific overrides; create it at `~/.config/fish/config.local.fish` if needed
+
+### Installing fisher (plugin manager)
+
+fisher is **not** installed via the symlink. Run this once after symlinking:
+
+```bash
+fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+```
+
+### Trying fish without changing your default shell
+
+```bash
+fish   # launch fish from inside zsh; exit to return to zsh
+```
+
+To make fish your default shell permanently:
+
+```bash
+chsh -s $(which fish)
+```
+
 ## Mac Setup
   1. run `brew-install.sh` to install [Homebrew](https://brew.sh) and run the Brewfile, this will make the following brew commands redundant.
 

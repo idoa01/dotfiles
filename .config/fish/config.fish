@@ -29,6 +29,9 @@ if status is-interactive
     zoxide init fish --cmd cd | source
     fzf --fish | source
 
+    # Scoped environment loading (brew install direnv)
+    direnv hook fish | source
+
     # Machine-specific overrides
     if test -f $HOME/.config/fish/config.local.fish
         source $HOME/.config/fish/config.local.fish

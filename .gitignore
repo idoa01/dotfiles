@@ -6,6 +6,10 @@
 /.lein/self-installs
 .DS_Store
 
+# Fish runtime files
+.config/fish/fish_variables
+.config/fish/config.local.fish
+
 # Beads / Dolt files (added by bd init)
 .dolt/
 *.db

@@ -5,3 +5,8 @@
 /.lein/tmp-atom-jars
 /.lein/self-installs
 .DS_Store
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key

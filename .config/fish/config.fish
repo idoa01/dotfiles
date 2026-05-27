@@ -32,6 +32,9 @@ if status is-interactive
     # Scoped environment loading (brew install direnv)
     direnv hook fish | source
 
+    # Plugin manager (fisher). To install plugins: fisher install owner/repo
+    # Installed plugins are tracked in .config/fish/fish_plugins
+
     # Machine-specific overrides
     if test -f $HOME/.config/fish/config.local.fish
         source $HOME/.config/fish/config.local.fish

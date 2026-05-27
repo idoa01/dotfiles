@@ -14,8 +14,4 @@ alias llt     'll $LS_OPTIONS --sort time'    # list ls according to time
 # less with ansi color
 #alias less    'less -R'
 alias lltr    'll -r --sort time' # list ls according to time, reversed
-# ssh tunnel - remmember to change proxy settings to 127.0.0.1:3333
-#alias sshtunnel 'ssh -L3333:proxy.huji.ac.il:8080 ido@jasper.md.huji.ac.il' #sshtunnel
-alias sshtunnel 'ssh -L 8118:localhost:8118 diamond.md.huji.ac.il' 
-#alias eclipse="UBUNTU_MENUPROXY=0 LIBOVERLAY_SCROLLBAR=0 eclipse"
-alias eclipse "UBUNTU_MENUPROXY=0 eclipse"
+alias keepassxc-cli='env PATH="$HOME/.local/share/keepassxc-shims:$PATH" keepassxc-cli'

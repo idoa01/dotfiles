@@ -73,3 +73,5 @@
   stsh = stash --include-untracked
 [core]
   excludefile = /home/ido/.gitignore
+[gpg]
+	program = /opt/homebrew/bin/gpg

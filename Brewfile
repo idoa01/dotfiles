@@ -38,10 +38,11 @@ brew "lazygit" # git terminal | https://github.com/jesseduffield/lazygit
 brew "zoxide" # cd replacement | https://github.com/ajeetdsouza/zoxide
 brew "bottom" # htop replacement | https://github.com/ClementTsang/bottom
 brew "tre-command" # tree replacement | https://github.com/dduan/tre
+brew "spf" | # superfile | https://github.com/yorukot/superfile
 
 # install the apps we want
 cask "warp"
-cask "ghostty"
+# cask "ghostty"
 #cask "alfred"
 # cask "homebrew/cask-fonts/font-hack-nerd-font"
 # cask "iterm2"

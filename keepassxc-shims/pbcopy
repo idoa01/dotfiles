@@ -1,0 +1,12 @@
+#!/bin/bash
+# Read the incoming password from keepassxc-cli
+PASSWORD=$(cat)
+
+# Use osascript to securely write to the pasteboard with the ConcealedType flag
+osascript -e "
+  use framework \"AppKit\"
+  set thePasteboard to current application's NSPasteboard's generalPasteboard()
+  thePasteboard's clearContents()
+  thePasteboard's setString:\"${PASSWORD}\" forType:\"public.utf8-plain-text\"
+  thePasteboard's setString:\"\" forType:\"org.nspasteboard.ConcealedType\"
+"

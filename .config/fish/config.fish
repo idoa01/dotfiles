@@ -2,7 +2,7 @@
 /opt/homebrew/bin/brew shellenv fish | source
 
 # PATH (personal bins after Homebrew so they still take priority)
-fish_add_path $HOME/bin $HOME/dotfiles/bin
+fish_add_path $HOME/bin $HOME/dotfiles/bin $HOME/.local/bin
 
 # Environment
 set -gx GPG_TTY (tty)
@@ -47,3 +47,6 @@ if status is-interactive
         source $HOME/.config/fish/config.local.fish
     end
 end
+
+# Created by `pipx` on 2026-05-28 09:04:56
+# set PATH $PATH /Users/ido.abramovich/.local/bin

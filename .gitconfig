@@ -71,6 +71,8 @@
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
   sapply = "!f() { git stash apply stash^{/$*}; }; f"
   stsh = stash --include-untracked
+  wt = "!f() { git fetch origin master && git worktree add .worktrees/$1 -b $1 --no-track origin/master && git config branch.$1.remote origin && git config branch.$1.merge refs/heads/$1 && cd .worktrees/$1 && git config branch.$1.remote origin && git config branch.$1.merge refs/heads/$1 && ln -sf ../../.venv .venv && ln -sf ../../.env .env && ln -sf ../../.envrc .envrc; }; f"
+  wt-clean = "!f() { git worktree remove .worktrees/$1 -f && git branch -D $1; }; f"
 [core]
   excludefile = /home/ido/.gitignore
 [gpg]

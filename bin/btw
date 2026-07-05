@@ -1,0 +1,141 @@
+#!/bin/bash
+SESSION_FILE="$HOME/.btw_session_id"
+EXPIRATION_SECS=86400 # 24 hours
+DEFAULT_MARKDOWN_LEVEL=2
+GLOW_THEME="dracula"
+if [ -z "${USE_GLOW+x}" ]; then
+    USE_GLOW=false
+    command -v glow &>/dev/null && USE_GLOW=true
+else
+    case "$USE_GLOW" in
+        false|False|FALSE|0|no|No|NO|"") USE_GLOW=false ;;
+        *) USE_GLOW=true ;;
+    esac
+fi
+
+# 1. Parse flags and arguments
+ALLOW_FILES=false
+FORCE_NEW=false
+ASIDE=false
+MARKDOWN_LEVEL=$DEFAULT_MARKDOWN_LEVEL
+PROMPT=""
+ARGS=()
+
+for arg in "$@"; do
+    if [ "$arg" = "-f" ] || [ "$arg" = "--files" ]; then
+        ALLOW_FILES=true
+    elif [ "$arg" = "--new" ]; then
+        FORCE_NEW=true
+    elif [ "$arg" = "--aside" ]; then
+        ASIDE=true
+    elif [[ "$arg" =~ ^-m([012])$ ]]; then
+        MARKDOWN_LEVEL="${BASH_REMATCH[1]}"
+    elif [ "$arg" = "-m" ]; then
+        NEXT_IS_LEVEL=true
+    elif [ "${NEXT_IS_LEVEL:-false}" = true ]; then
+        if [[ "$arg" =~ ^[012]$ ]]; then
+            MARKDOWN_LEVEL=$arg
+        else
+            echo "Error: -m requires a level of 0, 1, or 2" >&2
+            exit 1
+        fi
+        NEXT_IS_LEVEL=false
+    else
+        ARGS+=("$arg")
+    fi
+done
+
+if [ ${#ARGS[@]} -gt 0 ] && [ ! -t 0 ]; then
+    PIPED=$(cat)
+    PROMPT="${ARGS[*]}
+
+${PIPED}"
+elif [ ${#ARGS[@]} -gt 0 ]; then
+    PROMPT="${ARGS[*]}"
+elif [ ! -t 0 ]; then
+    PROMPT=$(cat)
+else
+    echo "Usage:"
+    echo "  btw <your question>"
+    echo "  btw -f <question about local files>"
+    echo "  btw --new <question>   # start a fresh session"
+    echo "  btw --aside <question> # one-off, no session"
+    echo "  btw -m 0 <question>    # plain text, no markdown"
+    echo "  btw -m 1 <question>    # minimal markdown (default)"
+    echo "  btw -m 2 <question>    # rich markdown"
+    echo ""
+    echo "Dependencies:"
+    echo "  jq    required"
+    echo "  glow  optional — renders markdown output (override with USE_GLOW=false)"
+    exit 1
+fi
+
+# 2. Define the Claude execution pipeline
+query_claude() {
+    local prompt="$1"
+    local base_prompt="You are a helpful, concise terminal assistant. Provide direct answers without unnecessary conversational filler."
+    local format_prompt
+    case "$MARKDOWN_LEVEL" in
+        0) format_prompt="Use plain text only — no markdown, no headers, no bullet points, no code fences." ;;
+        1) format_prompt="Use minimal markdown: fenced code blocks with language tags for code, nothing else." ;;
+        2) format_prompt="Use rich markdown: headers to structure long answers, bullet points for lists, bold for key terms, and fenced code blocks with language tags for all code." ;;
+    esac
+    local system_prompt="$base_prompt $format_prompt"
+    local model="haiku"
+
+    run_claude() {
+        local session_id="$1"
+        local custom_prompt="${2:-$prompt}"
+
+        local base_args=(--bare -p "$custom_prompt" --model "$model"
+                         --append-system-prompt "$system_prompt"
+                         --output-format json)
+        [ "$ALLOW_FILES" = true ] && base_args+=(--allowedTools "Read,Grep")
+        [ -n "$session_id" ] && base_args+=(--resume "$session_id")
+
+        claude "${base_args[@]}"
+    }
+
+    # Resolve session ID to resume (empty if --aside, --new, missing, or expired)
+    local resume_id=""
+    if [ "$ASIDE" = false ] && [ "$FORCE_NEW" = false ] && [ -f "$SESSION_FILE" ]; then
+        local mtime age
+        mtime=$(stat -f "%m" "$SESSION_FILE" 2>/dev/null || stat -c "%Y" "$SESSION_FILE")
+        age=$(( $(date +%s) - mtime ))
+        if [ "$age" -lt "$EXPIRATION_SECS" ]; then
+            resume_id=$(cat "$SESSION_FILE")
+        fi
+    fi
+
+    # --new: delete session file so we start fresh
+    if [ "$FORCE_NEW" = true ]; then
+        rm -f "$SESSION_FILE"
+    fi
+
+    # Run Claude and capture output
+    local output
+    output=$(run_claude "$resume_id") || { echo "Error: claude call failed" >&2; exit 1; }
+
+    # Display the result
+    local result
+    result=$(jq -r '.result' <<< "$output")
+    if [ "$USE_GLOW" = true ] && [ "$MARKDOWN_LEVEL" = "2" ]; then
+        glow -s "$GLOW_THEME" - <<< "$result"
+    elif [ "$USE_GLOW" = true ] && [ "$MARKDOWN_LEVEL" = "1" ]; then
+        glow - <<< "$result"
+    else
+        echo "$result"
+    fi
+
+    # Persist the session ID unless --aside
+    if [ "$ASIDE" = false ]; then
+        local new_id
+        new_id=$(jq -r '.session_id' <<< "$output")
+        if [ -n "$new_id" ] && [ "$new_id" != "null" ]; then
+            echo "$new_id" > "$SESSION_FILE"
+        fi
+    fi
+}
+
+# 3. Run the query
+query_claude "$PROMPT"

@@ -1,8 +1,15 @@
 #!/bin/bash
-SESSION_FILE="$HOME/.btw_session_id"
+SESSIONS_DIR="$HOME/.btw-sessions"
 EXPIRATION_SECS=86400 # 24 hours
 DEFAULT_MARKDOWN_LEVEL=2
 GLOW_THEME="dracula"
+
+_location=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+_slug="${_location#/}"
+_slug="${_slug//\//-}"
+SESSION_FILE="$SESSIONS_DIR/$_slug"
+unset _location _slug
+
 if [ -z "${USE_GLOW+x}" ]; then
     USE_GLOW=false
     command -v glow &>/dev/null && USE_GLOW=true
@@ -113,8 +120,26 @@ query_claude() {
     fi
 
     # Run Claude and capture output
-    local output
-    output=$(run_claude "$resume_id") || { echo "Error: claude call failed" >&2; exit 1; }
+    local output exit_code tmpstderr
+    tmpstderr=$(mktemp)
+
+    output=$(run_claude "$resume_id" 2>"$tmpstderr")
+    exit_code=$?
+
+    if [ $exit_code -ne 0 ]; then
+        if [ -n "$resume_id" ] && grep -q "No conversation found" "$tmpstderr" 2>/dev/null; then
+            rm -f "$SESSION_FILE" "$tmpstderr"
+            resume_id=""
+            output=$(run_claude "" 2>/dev/null) || { echo "Error: claude call failed" >&2; exit 1; }
+        else
+            cat "$tmpstderr" >&2
+            rm -f "$tmpstderr"
+            echo "Error: claude call failed" >&2
+            exit 1
+        fi
+    else
+        rm -f "$tmpstderr"
+    fi
 
     # Display the result
     local result
@@ -132,6 +157,7 @@ query_claude() {
         local new_id
         new_id=$(jq -r '.session_id' <<< "$output")
         if [ -n "$new_id" ] && [ "$new_id" != "null" ]; then
+            mkdir -p "$SESSIONS_DIR"
             echo "$new_id" > "$SESSION_FILE"
         fi
     fi
